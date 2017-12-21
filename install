@@ -9,6 +9,7 @@ cp twinkle.service /etc/systemd/system/
 
 cp ring /usr/local/bin/
 cp stopring /usr/local/bin/
+cp ring_shim /usr/local/bin/
 cp update_twinkle /usr/local/bin/
 cp template_twinkle_config /usr/local/bin/
 
