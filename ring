@@ -10,7 +10,7 @@ RINGING_FILE = '/run/ringing'
 RING_TIME = 60
 
 with open(RINGING_FILE, 'a'):
-    os.utime(fname, times)
+    os.utime(RINGING_FILE, None)
 
 unicorn.set_layout(unicorn.AUTO)
 unicorn.rotation(0)
