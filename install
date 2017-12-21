@@ -3,8 +3,8 @@
 apt-get install twinkle tftp-hpa python3-{jinja,pip}
 pip3 install unicornhat
 
-cp update_twinkle.service /usr/lib/systemd/system/
-cp update_twinkle.timer /usr/lib/systemd/system/
+cp update_twinkle.service /etc/systemd/system/
+cp update_twinkle.timer /etc/systemd/system/
 
 cp ring /usr/local/bin/
 cp stopring /usr/local/bin/
