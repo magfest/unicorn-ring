@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from itertools import repeat, chain
+from itertools import cycle
 import unicornhat as unicorn
 from time import sleep, time
 import sys
@@ -15,16 +15,12 @@ with open(RINGING_FILE, 'a'):
 unicorn.set_layout(unicorn.AUTO)
 unicorn.rotation(0)
 unicorn.brightness(1)
-width,height=unicorn.get_shape()
+width, height=unicorn.get_shape()
 
 cadence = "ffffff:100,000000:100," * 3 + "000000:300,"
 
 if len(sys.argv) > 1:
     cadence = sys.argv[1]
-
-def ncycles(iterable, n):
-    "Returns the sequence elements n times"
-    return chain.from_iterable(repeat(tuple(iterable), n))
 
 def parse_cadence(desc):
     steps = [c for c in desc.split(',') if c]
@@ -41,7 +37,7 @@ def parse_cadence(desc):
 
 def do_cadence(cadence):
     ring_start = time()
-    for r, g, b, dur in repeat(cadence):
+    for r, g, b, dur in cycle(cadence):
         unicorn.set_all(r, g, b)
         unicorn.show()
 
