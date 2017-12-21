@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+
+import jinja2
+import json
+import sys
+
+params = {}
+
+with open(sys.argv[1]) as vals:
+    params = json.load(vals)
+
+template = ''
+
+with open('/etc/twinkle.cfg.jinja') as tf:
+    template = jinja2.Template(tf.read())
+
+with open('/etc/twinkle.cfg', 'w') as f:
+    f.write(template.render(**params))

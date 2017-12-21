@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodically update twinkle
+
+[Timer]
+OnStartupSec=2m
+OnCalendar=*:0/15
+Unit=update_twinkle.service
+
+[Install]
+WantedBy=timers.target

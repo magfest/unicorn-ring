@@ -1,0 +1,6 @@
+[Unit]
+Description=Update twinkle config
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/update_twinkle

@@ -1,0 +1,4 @@
+[Service]
+ExecStart=/usr/bin/twinkle-console /etc/twinkle.cfg
+Restart=always
+RestartSec=60

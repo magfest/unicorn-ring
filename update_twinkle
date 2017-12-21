@@ -1,0 +1,20 @@
+#!/bin/bash
+
+TFTP_HOST="10.101.22.9"
+MAC=$(ip a | grep -A1 eth0 | grep ether | awk '{print $2}' | tr -d ':')
+OUT_FILE=$(mktemp)
+
+tftp $TFTP_HOST -c get "ringer_${MAC}.json" "${OUT_FILE}" >/dev/null
+
+if [ -s "${OUT_FILE}" ]; then
+    NEW=$(md5sum $OUT_FILE)
+    OLD=$(md5sum /var/last_config.json)
+
+    if [[ "${NEW}" != "${OLD}" ]]; then
+	cp $OUT_FILE /var/last_config.json
+	template_twinkle_config "${OUT_FILE}"
+	systemctl restart twinkle
+    fi
+fi
+
+rm $OUT_FILE
