@@ -97,14 +97,14 @@ ringtone_file=
 ringback_file=
 
 # SCRIPTS
-script_incoming_call=/usr/local/bin/ring
+script_incoming_call=/usr/local/bin/ring_shim
 script_in_call_answered=/usr/local/bin/stopring
 script_in_call_failed=/usr/local/bin/stopring
 script_outgoing_call=
 script_out_call_answered=
 script_out_call_failed=
-script_local_release=
-script_remote_release=
+script_local_release=/usr/local/bin/stopring
+script_remote_release=/usr/local/bin/stopring
 
 # NUMBER CONVERSION
 
