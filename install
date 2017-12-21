@@ -18,5 +18,9 @@ systemctl daemon-reload
 
 systemctl enable update_twinkle.timer
 systemctl enable update_twinkle.service
+systemctl enable twinkle.service
 systemctl start update_twinkle.timer
 systemctl start update_twinkle.service
+
+update_twinkle
+systemctl start twinkle.service
