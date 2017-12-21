@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get install twinkle tftp-hpa python3-{jinja,pip}
+apt-get install twinkle tftp-hpa python3-{jinja2,pip}
 pip3 install unicornhat
 
 cp update_twinkle.service /etc/systemd/system/
