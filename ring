@@ -39,9 +39,9 @@ def parse_cadence(desc):
         r, g, b = (col >> 16) & 255, (col >> 8) & 255, col & 255
         yield r, g, b, dur
 
-def do_cadence(cadence, count=16):
+def do_cadence(cadence):
     ring_start = time()
-    for r, g, b, dur in ncycles(cadence, count):
+    for r, g, b, dur in repeat(cadence):
         unicorn.set_all(r, g, b)
         unicorn.show()
 
@@ -52,4 +52,7 @@ def do_cadence(cadence, count=16):
 
 do_cadence(parse_cadence(cadence))
 
-os.remove(RINGING_FILE)
+try:
+    os.remove(RINGING_FILE)
+except:
+    pass
