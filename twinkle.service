@@ -2,3 +2,6 @@
 ExecStart=/usr/bin/twinkle-console /etc/twinkle.cfg
 Restart=always
 RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

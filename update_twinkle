@@ -7,8 +7,8 @@ OUT_FILE=$(mktemp)
 tftp $TFTP_HOST -c get "ringer_${MAC}.json" "${OUT_FILE}" >/dev/null
 
 if [ -s "${OUT_FILE}" ]; then
-    NEW=$(md5sum $OUT_FILE)
-    OLD=$(md5sum /var/last_config.json)
+    NEW=$(md5sum $OUT_FILE | awk '{print $1}')
+    OLD=$(md5sum /var/last_config.json | awk '{print $1}')
 
     if [[ "${NEW}" != "${OLD}" ]]; then
 	cp $OUT_FILE /var/last_config.json
