@@ -6,6 +6,7 @@ pip3 install unicornhat
 cp update_twinkle.service /etc/systemd/system/
 cp update_twinkle.timer /etc/systemd/system/
 cp twinkle.service /etc/systemd/system/
+cp ring.service /etc/systemd/system/
 
 cp ring /usr/local/bin/
 cp stopring /usr/local/bin/
