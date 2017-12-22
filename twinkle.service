@@ -1,4 +1,5 @@
 [Service]
+Environment="HOME=/root"
 ExecStart=/usr/bin/twinkle -c -f /etc/twinkle.cfg
 Restart=always
 RestartSec=60
