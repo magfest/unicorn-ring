@@ -1,6 +1,6 @@
 [Service]
 Environment="HOME=/root"
-ExecStart=/usr/bin/twinkle -c -f /etc/twinkle.cfg
+ExecStart=/bin/bash -c '/usr/bin/twinkle -c -f /etc/twinkle.cfg --immediate --cmd register < /dev/zero'
 Restart=always
 RestartSec=60
 
