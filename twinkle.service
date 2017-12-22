@@ -1,6 +1,9 @@
 [Service]
 Environment="HOME=/root"
 ExecStart=/bin/bash -c '/usr/bin/twinkle -c -f /etc/twinkle.cfg --immediate --cmd register < /dev/zero'
+ExecStop=/bin/bash -c '/usr/bin/twinkle -c -f /etc/twinkle.cfg --immediate --cmd deregister'
+ExecStop=/usr/bin/pkill -HUP twinkle
+
 Restart=always
 RestartSec=60
 
