@@ -1,7 +1,7 @@
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/ring
-ExecStop=/bin/bash -c 'touch /run/ringing'
+ExecStop=/bin/bash -c 'rm /run/ringing'
 
 [Install]
 WantedBy=multi-user.target

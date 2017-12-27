@@ -8,15 +8,15 @@ RINGING_FILE = '/run/ringing'
 if os.path.isfile(RINGING_FILE):
     sys.exit(0)
 
-with open(RINGING_FILE, 'a'):
-    os.utime(RINGING_FILE, None)
-
 from itertools import cycle
 import unicornhat as unicorn
 from time import sleep, time
 import json
 
 RING_TIME = 60
+
+with open(RINGING_FILE, 'a'):
+    os.utime(RINGING_FILE, None)
 
 unicorn.set_layout(unicorn.AUTO)
 unicorn.rotation(0)
@@ -93,12 +93,14 @@ def do_cadence(cadence):
 
         sleep(dur / 1000)
 
-try:
-    do_cadence(parse_cadence(cadence))
-finally:
+def cleanup():
     unicorn.set_all(0, 0, 0)
+    unicorn.show()
+    os.remove(RINGING_FILE)
 
 try:
-    os.remove(RINGING_FILE)
-except:
-    pass
+    do_cadence(parse_cadence(cadence))
+except KeyboardInterrupt:
+    sleep(.01)
+finally:
+    cleanup()
