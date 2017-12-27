@@ -26,3 +26,14 @@ systemctl start update_twinkle.service
 
 update_twinkle
 systemctl start twinkle.service
+
+grep "Completely disable audio" /boot/config.txt || cat <<EOF >> /boot/config.txt
+
+# Completely disable audio
+dtparam=audio=off
+dtparam=spi=on
+EOF
+
+systemctl enable ssh
+
+echo "Don't forget to change the password!"
